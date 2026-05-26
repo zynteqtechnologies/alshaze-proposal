@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM & Supply Chain Proposal — AL SHSAZE × Zynteq</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8d49a;
+      --gold-dark: #8b6914;
+      --emerald: #0d7a5f;
+      --emerald-light: #e0f5ef;
+      --deep: #0f1923;
+      --ink: #1a2332;
+      --mist: #f7f5f0;
+      --cream: #fffef8;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── ANIMATED BG ── */
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 90% 70% at 10% 0%, rgba(201, 168, 76, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 60% at 90% 15%, rgba(13, 122, 95, 0.10) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 50% at 50% 50%, rgba(245, 240, 225, 0.8) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 60% at 20% 90%, rgba(201, 168, 76, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 80% 85%, rgba(100, 140, 200, 0.07) 0%, transparent 50%),
+        linear-gradient(160deg, #faf7ee 0%, #f0f7f4 30%, #f5f8ff 60%, #fdf9f0 100%);
+      animation: bgShift 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgShift {
+      0% {
+        filter: hue-rotate(0deg)
+      }
+
+      100% {
+        filter: hue-rotate(8deg)
+      }
+    }
+
+    /* ── EXPORT BUTTON ── */
+    .export-bar {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      z-index: 999;
+      display: flex;
+      gap: 10px;
+    }
+
+    .export-btn {
+      background: linear-gradient(135deg, var(--gold) 0%, #e8c96a 50%, var(--gold) 100%);
+      color: #2a1a00;
+      border: none;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4);
+      letter-spacing: 0.02em;
+      transition: all 0.25s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .export-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 28px rgba(201, 168, 76, 0.55);
+    }
+
+    .export-btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0
+    }
+
+    /* ── WRAPPER ── */
+    .wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 60px 40px 100px
+    }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      padding: 70px 40px 60px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+          rgba(201, 168, 76, 0.08) 0%,
+          rgba(13, 122, 95, 0.06) 50%,
+          rgba(180, 160, 220, 0.05) 100%);
+      border-radius: 24px;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .header-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--emerald);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .header-eyebrow::before,
+    .header-eyebrow::after {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--emerald), transparent);
+    }
+
+    .header-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 54px;
+      font-weight: 300;
+      color: var(--deep);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .header-title span {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold), #e8d49a, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-sub {
+      font-size: 15px;
+      color: #2f3d4e;
+      font-weight: 400;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .header-meta {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .header-meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .header-meta-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4b5a46;
+      font-family: 'DM Mono', monospace;
+      font-weight: 500;
+    }
+
+    .header-meta-val {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .divider-ornament {
+      text-align: center;
+      margin: 48px 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: rgba(201, 168, 76, 0.5);
+      letter-spacing: 12px;
+      position: relative;
+    }
+
+    .divider-ornament::before,
+    .divider-ornament::after {
+      content: '';
+      display: inline-block;
+      width: 120px;
+      height: 1px;
+      vertical-align: middle;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3));
+      margin: 0 16px;
+    }
+
+    .divider-ornament::after {
+      background: linear-gradient(90deg, rgba(201, 168, 76, 0.3), transparent);
+    }
+
+    .fee-container {
+      text-align: center;
+      padding: 40px;
+      margin-bottom: 20px;
+    }
+
+    .fee-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px;
+      font-weight: 300;
+      color: var(--deep);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      margin-bottom: 56px
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(201, 168, 76, 0.3), transparent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 400;
+      color: var(--deep);
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+
+    /* ── CARDS ── */
+    .glass {
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(16px);
+      border-radius: 16px;
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.02);
+      padding: 28px 32px;
+      margin-bottom: 16px;
+    }
+
+    .glass-gold {
+      background: linear-gradient(135deg, rgba(255, 248, 220, 0.7) 0%, rgba(255, 255, 245, 0.6) 100%);
+      border-color: rgba(201, 168, 76, 0.25);
+    }
+
+    .glass-emerald {
+      background: linear-gradient(135deg, rgba(224, 245, 239, 0.6) 0%, rgba(240, 252, 248, 0.5) 100%);
+      border-color: rgba(13, 122, 95, 0.15);
+    }
+
+    /* ── STAGE PIPELINE ── */
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .stage {
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      border-radius: 10px;
+      padding: 14px 16px;
+      position: relative;
+    }
+
+    .stage-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--gold-dark);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .stage-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--deep);
+      line-height: 1.3;
+    }
+
+    .stage-desc {
+      font-size: 11px;
+      color: #38485c;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* ── FEATURE GRID ── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 12px;
+      padding: 20px 22px;
+    }
+
+    .feature-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .feature-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--deep);
+      margin-bottom: 6px;
+    }
+
+    .feature-body {
+      font-size: 12px;
+      color: #38485c;
+      line-height: 1.6;
+    }
+
+    /* ── COST TABLE ── */
+    .cost-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 16px 0;
+    }
+
+    .cost-table th {
+      text-align: left;
+      font-size: 10px;
+      font-weight: 600;
+      color: #4b5a46;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+
+    .cost-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      color: var(--ink);
+    }
+
+    .cost-table tr:last-child td {
+      border-bottom: none
+    }
+
+    .cost-table tr.total-row td {
+      font-weight: 500;
+      font-size: 14px;
+      background: rgba(201, 168, 76, 0.08);
+      color: var(--gold-dark);
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+      border-bottom: none;
+    }
+
+    .cost-table tr:hover td {
+      background: rgba(255, 255, 255, 0.4)
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    .badge-gold {
+      background: rgba(201, 168, 76, 0.15);
+      color: var(--gold-dark)
+    }
+
+    .badge-green {
+      background: rgba(13, 122, 95, 0.1);
+      color: var(--emerald)
+    }
+
+    /* ── MILESTONE ── */
+    .milestones {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px
+    }
+
+    .milestone {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 253, 240, 0.5));
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      border-radius: 12px;
+      padding: 22px 18px;
+    }
+
+    .milestone-pct {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 400;
+      color: var(--gold-dark);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .milestone-amt {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--deep);
+      margin-bottom: 4px;
+    }
+
+    .milestone-label {
+      font-size: 11px;
+      color: #4b5a46;
+      font-weight: 500;
+    }
+
+    /* ── PHASE BLOCKS ── */
+    .phase {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0;
+      margin-bottom: 20px;
+    }
+
+    .phase-label {
+      padding: 24px 20px 24px 0;
+      border-right: 2px solid rgba(201, 168, 76, 0.25);
+      text-align: right;
+    }
+
+    .phase-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: rgba(201, 168, 76, 0.25);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .phase-tag {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .phase-content {
+      padding: 24px 0 24px 28px;
+    }
+
+    .phase-time {
+      font-size: 12px;
+      color: var(--emerald);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .phase-items {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .phase-item {
+      font-size: 12px;
+      color: #24303f;
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .phase-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    /* ── SCENARIO ── */
+    .scenario {
+      background: rgba(255, 255, 255, 0.45);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+    }
+
+    .scenario-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--deep);
+      margin-bottom: 8px;
+    }
+
+    .scenario-body {
+      font-size: 12px;
+      color: #38485c;
+      line-height: 1.65;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 80px;
+      border-top: 1px solid rgba(201, 168, 76, 0.15);
+      padding-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--deep);
+      margin-bottom: 6px;
+    }
+
+    .footer-contact {
+      font-size: 12px;
+      color: #38485c;
+      line-height: 2
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+
+    .footer-link {
+      font-size: 12px;
+      color: var(--emerald);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .validity-box {
+      margin-top: 32px;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), rgba(201, 168, 76, 0.05));
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 12px;
+      padding: 18px 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #5e461b;
+    }
+
+    .validity-box strong {
+      color: #4d360a
+    }
+
+    /* ── LIST STYLE ── */
+    ul.styled {
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px
+    }
+
+    ul.styled li {
+      font-size: 12px;
+      color: #24303f;
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.6
+    }
+
+    ul.styled li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      font-size: 7px;
+      top: 5px;
+      color: var(--gold);
+      opacity: 0.7
+    }
+
+    p.body {
+      font-size: 13px;
+      color: #24303f;
+      line-height: 1.75;
+      margin-bottom: 12px
+    }
+
+    /* ── PRINT / PDF ── */
+    @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      /* Force color printing across all elements */
+      *,
+      *::before,
+      *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      /* Disable screen scroll fade-up animations so all components print fully visible */
+      .section,
+      .glass,
+      .milestone,
+      .stage,
+      .feature-card,
+      .fu,
+      .fu1,
+      .fu2,
+      .fu3 {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+      }
+
+      .export-bar {
+        display: none !important;
+      }
+
+      .page-bg {
+        display: none !important;
+      }
+
+      body {
+        background: linear-gradient(160deg, #faf7ee 0%, #f0f7f4 30%, #f5f8ff 60%, #fdf9f0 100%) !important;
+        color: var(--ink) !important;
+        font-size: 13px;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .wrap {
+        padding: 20mm 20mm !important;
+        margin: 0 auto !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Prevent sections from being awkwardly split across pages */
+      .section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 40px;
+      }
+
+      /* Maintain elegant translucent glass styling with higher print opacity */
+      .glass {
+        background: rgba(255, 255, 255, 0.75) !important;
+        border: 1px solid rgba(201, 168, 76, 0.25) !important;
+        backdrop-filter: none !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .glass-gold {
+        background: linear-gradient(135deg, rgba(255, 248, 220, 0.85) 0%, rgba(255, 255, 245, 0.75) 100%) !important;
+        border-color: rgba(201, 168, 76, 0.3) !important;
+      }
+
+      .glass-emerald {
+        background: linear-gradient(135deg, rgba(224, 245, 239, 0.75) 0%, rgba(240, 252, 248, 0.65) 100%) !important;
+        border-color: rgba(13, 122, 95, 0.25) !important;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.65) !important;
+        border: 1px solid rgba(0, 0, 0, 0.08) !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .stage {
+        background: rgba(255, 255, 255, 0.65) !important;
+        border: 1px solid rgba(201, 168, 76, 0.18) !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .milestone {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 253, 240, 0.75)) !important;
+        border: 1px solid rgba(201, 168, 76, 0.25) !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .scenario {
+        background: rgba(255, 255, 255, 0.6) !important;
+        border-left: 3px solid var(--gold) !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .header::before {
+        background: linear-gradient(135deg, rgba(201, 168, 76, 0.08) 0%, rgba(13, 122, 95, 0.06) 50%, rgba(180, 160, 220, 0.05) 100%) !important;
+        border: 1px solid rgba(201, 168, 76, 0.25) !important;
+      }
+
+      .header-title span {
+        background: linear-gradient(135deg, var(--gold-dark), var(--gold), #e8d49a, var(--gold)) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+      }
+
+      .cost-table tr.total-row td {
+        background: rgba(201, 168, 76, 0.12) !important;
+        color: var(--gold-dark) !important;
+      }
+
+      .badge-gold {
+        background: rgba(201, 168, 76, 0.2) !important;
+        color: var(--gold-dark) !important;
+      }
+
+      .badge-green {
+        background: rgba(13, 122, 95, 0.15) !important;
+        color: var(--emerald) !important;
+      }
+
+      .validity-box {
+        background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(201, 168, 76, 0.07)) !important;
+        border: 1px solid rgba(201, 168, 76, 0.25) !important;
+        color: #5e461b !important;
+      }
+
+      .validity-box strong {
+        color: #4d360a !important;
+      }
+
+      /* Enhance text contrast for printing while preserving color match */
+      p.body,
+      ul.styled li,
+      .phase-item {
+        color: #24303f !important;
+        /* Dark slate-navy instead of light grey */
+      }
+
+      .feature-body,
+      .stage-desc,
+      .scenario-body,
+      .footer-contact,
+      .header-sub {
+        color: #38485c !important;
+        /* Darker slate-blue for readable descriptions */
+      }
+
+      .header-meta-label,
+      .milestone-label,
+      .cost-table th {
+        color: #4a5945 !important;
+        /* Dark sage-grey for metadata labels */
+      }
+
+      .stage-num,
+      .section-label {
+        color: #725610 !important;
+        /* Darker gold-brown for labels */
+      }
+
+      .page-break {
+        page-break-before: always !important;
+        break-before: page !important;
+      }
+    }
+
+
+    /* ── RESPONSIVE STYLES (MOBILE & TABLET) ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .grid-2-tc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .grid-2-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 32px;
+    }
+
+    .grid-4-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .wrap {
+        max-width: 950px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .grid-4-steps {
+        grid-template-columns: 1fr 1fr;
+      }
+      .pipeline {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .wrap {
+        padding: 40px 24px 60px;
+      }
+      .glass {
+        padding: 20px 24px;
+      }
+      .header {
+        padding: 40px 20px 30px;
+      }
+      .header-title {
+        font-size: 38px;
+      }
+      .section-title {
+        font-size: 28px;
+      }
+      .grid-2-tc, .grid-2-list, .feature-grid, .milestones {
+        grid-template-columns: 1fr;
+      }
+      .grid-2-list {
+        gap: 10px;
+      }
+      .footer {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+      }
+      .footer-links {
+        align-items: center;
+      }
+      .footer-links div {
+        text-align: center !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .export-bar {
+        position: static;
+        padding: 16px 16px 0;
+        justify-content: center;
+        margin-bottom: -20px;
+      }
+      .pipeline, .grid-4-steps {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .phase {
+        grid-template-columns: 1fr;
+      }
+      .phase-label {
+        padding: 16px 0 10px;
+        border-right: none;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+        text-align: left;
+      }
+      .phase-content {
+        padding: 16px 0;
+      }
+      .phase-num {
+        font-size: 36px !important;
+      }
+      .divider-ornament::before,
+      .divider-ornament::after {
+        width: 40px !important;
+        margin: 0 8px !important;
+      }
+      .divider-ornament {
+        white-space: nowrap;
+        font-size: 18px !important;
+        letter-spacing: 8px !important;
+        margin: 32px 0 !important;
+      }
+      .fee-container {
+        padding: 24px 16px !important;
+      }
+      .fee-amount {
+        font-size: 48px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .wrap {
+        padding: 30px 16px 40px;
+      }
+      .glass {
+        padding: 16px 18px;
+      }
+      .header-title {
+        font-size: 32px;
+      }
+      .section-title {
+        font-size: 24px;
+      }
+      .fee-amount {
+        font-size: 40px !important;
+      }
+    }
+
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .fu {
+      animation: fadeUp 0.6s ease both
+    }
+
+    .fu1 {
+      animation-delay: 0.1s
+    }
+
+    .fu2 {
+      animation-delay: 0.2s
+    }
+
+    .fu3 {
+      animation-delay: 0.3s
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-bg"></div>
+
+  <!-- Export Bar -->
+  <div class="export-bar">
+    <button class="export-btn" onclick="exportPDF()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17" />
+      </svg>
+      Export as PDF
+    </button>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ═══════════════════ HEADER ═══════════════════ -->
+    <div class="header fu">
+      <div class="header-eyebrow">Confidential · Formal Proposal</div>
+      <h1 class="header-title">CRM & Supply Chain<br><span>Management System</span></h1>
+      <p class="header-sub">Unified platform for polymer trading across East Africa<br>Dubai · India · Mozambique ·
+        Zambia · Malawi · Zimbabwe · Tanzania</p>
+      <div class="header-meta">
+        <div class="header-meta-item">
+          <span class="header-meta-label">Prepared For</span>
+          <span class="header-meta-val">Alshsaze Trading Co.</span>
+        </div>
+        <div class="header-meta-item">
+          <span class="header-meta-label">Prepared By</span>
+          <span class="header-meta-val">Zynteq Technologies</span>
+        </div>
+        <div class="header-meta-item">
+          <span class="header-meta-label">Proposal Date</span>
+          <span class="header-meta-val">May 2025</span>
+        </div>
+        <div class="header-meta-item">
+          <span class="header-meta-label">Validity</span>
+          <span class="header-meta-val">30 Days</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider-ornament fu1">✦ ✦ ✦</div>
+
+    <!-- ═══════════════════ EXECUTIVE SUMMARY ═══════════════════ -->
+    <div class="section fu2">
+      <div class="section-label">01 — Overview</div>
+      <h2 class="section-title">Executive Summary</h2>
+
+      <div class="grid-2">
+        <div class="glass glass-gold">
+          <div
+            style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:12px;font-family:'DM Mono',monospace">
+            About Client</div>
+          <div
+            style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--deep);margin-bottom:10px">
+            Alshsaze Trading Co.</div>
+          <p class="body">Distributes Virgin Polymer Stock (PE/PP/PET) across Mozambique, Zambia, Zimbabwe, Tanzania and
+            Malawi, operating from Dubai with a bonded warehouse in Beira.</p>
+          <p class="body" style="margin-bottom:0">Current workflows rely on Excel, Google Sheets and manual WhatsApp —
+            leading to stock blind spots, handwritten consignment notes, and disconnected payment tracking.</p>
+          <div style="margin-top:14px">
+            <a href="http://alshsaze.com"
+              style="font-family:'DM Mono',monospace;font-size:11px;color:var(--emerald);text-decoration:none">alshsaze.com
+              ↗</a>
+          </div>
+        </div>
+        <div class="glass glass-emerald">
+          <div
+            style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--emerald);margin-bottom:12px;font-family:'DM Mono',monospace">
+            About Developer</div>
+          <div
+            style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--deep);margin-bottom:10px">
+            Zynteq Technologies</div>
+          <p class="body">Builds purpose-built, cloud-native CRM & supply chain solutions for non-technical staff
+            accessible across Dubai, India, and East Africa.</p>
+          <p class="body" style="margin-bottom:0">Complete digital platform: inventory, deal pipeline, dispatch,
+            document management, payment installments, analytics, driver portal, customer portal, multi-vessel
+            allocation, and one-tap GPS tracking.</p>
+          <div style="margin-top:14px">
+            <a href="https://zynteqtechnologies.com/"
+              style="font-family:'DM Mono',monospace;font-size:11px;color:var(--emerald);text-decoration:none">zynteqtechnologies.com
+              ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ BUSINESS FLOW ═══════════════════ -->
+    <div class="section page-break">
+      <div class="section-label">02 — Workflow</div>
+      <h2 class="section-title">End-to-End Business Flow</h2>
+      <p class="body">Complete 12-stage deal lifecycle — from stock arrival in Beira to deal close in Dubai.</p>
+
+      <div class="pipeline">
+        <div class="stage">
+          <div class="stage-num">01</div>
+          <div class="stage-name">Stock Arrives</div>
+          <div class="stage-desc">Qty, grade, supplier, arrival date logged</div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">02</div>
+          <div class="stage-name">Stock Recorded</div>
+          <div class="stage-desc">Warehouse vs vessel + grade-wise bifurcation</div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">03</div>
+          <div class="stage-name">PFI Created</div>
+          <div class="stage-desc">Grade, qty, USD price, custom payment terms</div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">04</div>
+          <div class="stage-name">Deal Confirmed</div>
+          <div class="stage-desc">Customer accepts → allocation trigger</div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">05</div>
+          <div class="stage-name">Stock Allocated</div>
+          <div class="stage-desc">Lock warehouse / pre-alloc vessel (split across vessels)</div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">06</div>
+          <div class="stage-name">Truck Loaded</div>
+          <div class="stage-desc">Driver, truck#, 30t minimum, destination</div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">07</div>
+          <div class="stage-name">RCN & SAD Uploaded</div>
+          <div class="stage-desc">Auto-folder created in ImageKit (RCN# + deal ID)</div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">08</div>
+          <div class="stage-name">Truck Dispatched</div>
+          <div class="stage-desc">AGL docs attached, payment timer starts</div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">09</div>
+          <div class="stage-name">In Transit</div>
+          <div class="stage-desc">Driver sends GPS updates via one-tap link</div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">10</div>
+          <div class="stage-name">Delivered</div>
+          <div class="stage-desc">POD uploaded by driver, payment follow-up triggered</div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">11</div>
+          <div class="stage-name">Payment Collected</div>
+          <div class="stage-desc">Installments logged, overdue alerts active</div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">12</div>
+          <div class="stage-name">Deal Closed</div>
+          <div class="stage-desc">Archived with complete timeline & docs</div>
+        </div>
+      </div>
+
+      <div class="glass glass-gold" style="padding:16px 24px">
+        <span style="font-size:11px;color:var(--gold-dark);font-weight:500">Vessel Tracking:</span>
+        <span style="font-size:12px;color:#38485c;margin-left:8px">One-click tracking for MSC, Maersk, CMA CGM and all
+          carriers — B/L pre-loaded, integrated directly into each shipment record.</span>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ MULTI-VESSEL ═══════════════════ -->
+    <div class="section page-break">
+      <div class="section-label">03 — Key Feature</div>
+      <h2 class="section-title">Multi-Vessel Allocation</h2>
+
+      <div class="scenario">
+        <div class="scenario-title">Scenario A — Single customer order split across two vessels</div>
+        <div class="scenario-body">Customer orders 200 MT of HDPE. 120 MT arriving on Vessel A, 80 MT on Vessel B. One
+          PFI is created for 200 MT. At deal confirmation, the system allocates 120 MT from Vessel A and 80 MT from
+          Vessel B (pre-allocated with ETA). Both allocations tracked under the same deal. Dispatch in two shipments,
+          both linked to same PFI — customer sees one order, you see two shipments.</div>
+      </div>
+
+      <div class="scenario">
+        <div class="scenario-title">Scenario B — Multiple customer orders from a single vessel</div>
+        <div class="scenario-body">One vessel arrives with 300 MT of PP. Three customers have orders (100, 120, 80 MT).
+          Separate PFIs created for each customer. Stock arrival logged (vessel name, B/L, total quantity). System
+          allocates quantity from that vessel's stock to each deal. All deals show same vessel name and B/L as source —
+          full traceability.</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ MODULES ═══════════════════ -->
+    <div class="section page-break">
+      <div class="section-label">04 — Platform</div>
+      <h2 class="section-title">Core Modules</h2>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(201,168,76,0.1)">📦</div>
+          <div class="feature-title">Inventory & Stock</div>
+          <div class="feature-body">Grade-wise management (HDPE, LDPE, LLDPE, PP, PET). Dual source: warehouse / vessel
+            with ETA. Real-time total / allocated / free / dispatched. Tranche management, low-stock alerts, full audit
+            trail.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(13,122,95,0.08)">🔄</div>
+          <div class="feature-title">Deal & CRM Pipeline</div>
+          <div class="feature-body">PFI creation with custom payment terms per deal. 9-stage pipeline with allocation
+            engine (prevents double-booking). Customer profiles, full deal timeline, and RCN auto-filing.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(100,130,200,0.08)">🚛</div>
+          <div class="feature-title">Dispatch & Truck Management</div>
+          <div class="feature-body">30-ton MOQ, dedicated truck per deal. Driver + truck number + destination. One
+            driver can be assigned to multiple deals — single login, one update form, applied to all linked deals.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(180,100,150,0.08)">📄</div>
+          <div class="feature-title">RCN & Document Auto-filing</div>
+          <div class="feature-body">Staff uploads RCN and SAD. System auto-creates an ImageKit folder named with RCN
+            number + deal ID. All docs (PFI, SAD, RCN, weighbridge, POD, invoices) stored inside — no manual folder
+            creation.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(50,180,130,0.08)">📍</div>
+          <div class="feature-title">One-Tap GPS Driver Tracking</div>
+          <div class="feature-body">Driver opens unique link, taps "Send My Location". HTML5 Geolocation API captures
+            GPS coordinates + timestamp. Staff clicks "View on Map" → OpenStreetMap shows exact position. Free, no API
+            key required.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(201,168,76,0.1)">📱</div>
+          <div class="feature-title">Driver Portal</div>
+          <div class="feature-body">Unique mobile link per driver. Shows customer, destination, product, quantity. Two
+            buttons: "Send My Location" and "Upload POD". Auto-linked to all relevant deals. No training required.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(100,130,200,0.08)">👤</div>
+          <div class="feature-title">Customer Portal (Read-only)</div>
+          <div class="feature-body">Customer logs in, sees only their own orders. Real-time status: Confirmed → Loaded →
+            On the Way → Delivered. Downloads PFI, POD, invoice anytime. Sees current shipment location.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(13,122,95,0.08)">💰</div>
+          <div class="feature-title">Payment & Installments</div>
+          <div class="feature-body">Advance or credit modes. Custom terms per deal (30/60/75 days RCN, advance +
+            balance). Installment schedule log with amount, date, reference. Overdue alerts + outstanding report.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(180,100,150,0.08)">📊</div>
+          <div class="feature-title">Analytics & BI</div>
+          <div class="feature-body">Daily P&L dashboard. Revenue by country and by grade. Outstanding collections
+            overview. Deal conversion rate tracking. Stock movement chart.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(50,150,220,0.08)">✉️</div>
+          <div class="feature-title">Email Automation</div>
+          <div class="feature-body">Auto email on RCN upload: "Payment timer started – due [date]" with RCN PDF. Auto
+            email on POD upload. Auto payment reminders before due date and overdue alerts. Full message log per deal.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ INFRASTRUCTURE ═══════════════════ -->
+    <div class="section page-break">
+      <div class="section-label">05 — Infrastructure</div>
+      <h2 class="section-title">Cloud Stack & Monthly Costs</h2>
+      <p class="body">All third-party services billed separately by providers. No markups. Maximum volume: 500
+        deals/month.</p>
+
+      <div class="glass" style="overflow:hidden;padding:0">
+        <div style="padding:20px 28px;background:rgba(201,168,76,0.06);border-bottom:1px solid rgba(201,168,76,0.12)">
+          <span style="font-size:12px;font-weight:500;color:var(--deep)">Monthly Third-Party Costs at Maximum Volume
+            (500 Deals/Month)</span>
+        </div>
+        <div style="padding:0 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+          <table class="cost-table">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Plan</th>
+                <th>Key Features</th>
+                <th style="text-align:right">Monthly Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Supabase</strong><br><span style="font-size:11px;color:#4b5a46">Database + Auth +
+                    Real-time</span></td>
+                <td><span class="badge badge-gold">Pro ✅</span></td>
+                <td style="font-size:11px;color:#38485c">8 GB DB, daily backups, 100k MAUs, real-time, no pausing</td>
+                <td style="text-align:right;font-weight:500">$25</td>
+              </tr>
+              <tr>
+                <td><strong>ImageKit</strong><br><span style="font-size:11px;color:#4b5a46">Document & PDF
+                    Storage</span></td>
+                <td><span class="badge badge-gold">Lite</span></td>
+                <td style="font-size:11px;color:#38485c">10 GB storage, 40 GB bandwidth, auto-folder creation.<br>
+                  <span style="font-size:10px;color:#725610;font-weight:500">Pay-as-you-go overage: $0.10/GB storage & $0.50/GB bandwidth (no hard stops).</span></td>
+                <td style="text-align:right;font-weight:500">$9</td>
+              </tr>
+              <tr>
+                <td><strong>Resend</strong><br><span style="font-size:11px;color:#4b5a46">Transactional Emails</span>
+                </td>
+                <td><span class="badge badge-gold">Pro</span></td>
+                <td style="font-size:11px;color:#38485c">50,000 emails/month, no daily limit, 10 domains</td>
+                <td style="text-align:right;font-weight:500">$20</td>
+              </tr>
+              <tr>
+                <td><strong>Vercel</strong><br><span style="font-size:11px;color:#4b5a46">Frontend Hosting</span></td>
+                <td><span class="badge badge-green">Hobby ✅ Free</span></td>
+                <td style="font-size:11px;color:#38485c">Unlimited traffic (fair use), 100 GB bandwidth, deploy from Git
+                </td>
+                <td style="text-align:right;font-weight:500">$0</td>
+              <tr class="total-row">
+                <td colspan="3"><strong>Total at Maximum Volume (500 deals/month)</strong><br><span
+                    style="font-size:11px;font-weight:400">At ~100 deals/month: ImageKit + Resend stay free → total
+                    $25/month</span></td>
+                <td style="text-align:right;font-size:18px">$54.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ INVESTMENT ═══════════════════ -->
+    <div class="section page-break">
+      <div class="section-label">06 — Investment</div>
+      <h2 class="section-title">One-Time Development Fee</h2>
+
+      <div class="glass glass-gold fee-container">
+        <div
+          style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:12px;font-family:'DM Mono',monospace">
+          One-Time Development Fee</div>
+        <div class="fee-amount">₹42,000</div>
+        <div style="font-size:13px;color:#4b5a46">INR · Full platform development, deployment & training</div>
+      </div>
+
+      <div class="glass" style="margin-bottom:20px">
+        <div style="font-size:12px;font-weight:500;color:var(--deep);margin-bottom:14px">Includes Everything:</div>
+        <div class="grid-2-list">
+          <ul class="styled">
+            <li>Full CRM + supply chain platform</li>
+            <li>Inventory with grade management</li>
+            <li>Deal pipeline (custom payment terms per deal)</li>
+            <li>Multi-vessel allocation engine</li>
+            <li>Dispatch & RCN upload with auto-filing</li>
+            <li>Document management per deal (SAD, RCN, weighbridge, POD)</li>
+            <li>Payment tracking & installment management</li>
+          </ul>
+          <ul class="styled">
+            <li>Automated email notifications (RCN, POD, reminders)</li>
+            <li>Analytics dashboard (P&L, revenue by grade/country)</li>
+            <li>Driver portal (unique link, one-tap GPS, POD upload)</li>
+            <li>Customer portal (track orders, download docs)</li>
+            <li>ImageKit auto-folder creation (RCN + deal ID)</li>
+            <li>Deployment + staff training + Cloudflare setup</li>
+            <li>3 rounds of revisions + 30 days free bug fixes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        style="margin-bottom:8px;font-size:11px;font-weight:600;color:#4b5a46;text-transform:uppercase;letter-spacing:0.1em">
+        Payment Milestones</div>
+      <div class="milestones">
+        <div class="milestone">
+          <div class="milestone-pct">40%</div>
+          <div class="milestone-amt">₹16,000</div>
+          <div class="milestone-label">Advance<br>Project Kickoff</div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-pct">40%</div>
+          <div class="milestone-amt">₹16,000</div>
+          <div class="milestone-label">Phase 1 Delivery<br>Week 3</div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-pct">20%</div>
+          <div class="milestone-amt">₹8,000</div>
+          <div class="milestone-label">Final Handover<br>Week 6</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ TIMELINE ═══════════════════ -->
+    <div class="section page-break">
+      <div class="section-label">07 — Timeline</div>
+      <h2 class="section-title">Project Timeline — 6 Weeks</h2>
+
+      <div class="phase">
+        <div class="phase-label">
+          <div class="phase-num">01</div>
+          <div class="phase-tag">Phase One</div>
+        </div>
+        <div class="phase-content">
+          <div class="phase-time">Weeks 1–3</div>
+          <div class="phase-items">
+            <div class="phase-item">Requirements gathering & UI/UX design</div>
+            <div class="phase-item">Database architecture & schema (supports multi-vessel allocation)</div>
+            <div class="phase-item">Inventory + dual source + grade-wise management</div>
+            <div class="phase-item">Deal CRM pipeline with custom payment terms per deal</div>
+            <div class="phase-item">Stock allocation engine (no double-booking, split across vessels)</div>
+            <div class="phase-item">Truck dispatch + document upload (SAD, RCN)</div>
+            <div class="phase-item">RCN auto-filing with ImageKit folder creation</div>
+            <div class="phase-item">Vessel record + multi-carrier tracking links</div>
+            <div class="phase-item">Driver portal foundation (unique link generation)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-label">
+          <div class="phase-num">02</div>
+          <div class="phase-tag">Phase Two</div>
+        </div>
+        <div class="phase-content">
+          <div class="phase-time">Weeks 4–6</div>
+          <div class="phase-items">
+            <div class="phase-item">Installment payment module + overdue alerts</div>
+            <div class="phase-item">Analytics dashboard (P&L, revenue by grade/country)</div>
+            <div class="phase-item">Email automation (RCN upload, POD upload, payment reminders)</div>
+            <div class="phase-item">ImageKit document management integration</div>
+            <div class="phase-item">Driver portal (one-tap GPS, OpenStreetMap view, POD upload)</div>
+            <div class="phase-item">Customer portal (order history, document downloads, shipment tracking)</div>
+            <div class="phase-item">Full dashboard & reporting suite</div>
+            <div class="phase-item">QA testing + staff training sessions</div>
+            <div class="phase-item">Live deployment + Cloudflare setup</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ TERMS ═══════════════════ -->
+    <div class="section page-break">
+      <div class="section-label">08 — Terms</div>
+      <h2 class="section-title">Terms & Conditions</h2>
+
+      <div class="grid-2-tc">
+        <div class="glass" style="padding:20px 24px">
+          <div style="font-size:12px;font-weight:500;color:var(--deep);margin-bottom:8px">Project Scope</div>
+          <div style="font-size:12px;color:#5a6880;line-height:1.65">All features detailed in this proposal are
+            included. Additional features will be estimated separately before any work begins.</div>
+        </div>
+        <div class="glass" style="padding:20px 24px">
+          <div style="font-size:12px;font-weight:500;color:var(--deep);margin-bottom:8px">Revisions</div>
+          <div style="font-size:12px;color:#5a6880;line-height:1.65">3 rounds of revisions included, provided as batched
+            feedback for efficient delivery within the 6-week timeline.</div>
+        </div>
+        <div class="glass" style="padding:20px 24px">
+          <div style="font-size:12px;font-weight:500;color:var(--deep);margin-bottom:8px">Intellectual Property</div>
+          <div style="font-size:12px;color:#5a6880;line-height:1.65">Full source code ownership transfers to Alshsaze
+            Trading Co. upon receipt of final payment.</div>
+        </div>
+        <div class="glass" style="padding:20px 24px">
+          <div style="font-size:12px;font-weight:500;color:var(--deep);margin-bottom:8px">Confidentiality</div>
+          <div style="font-size:12px;color:#5a6880;line-height:1.65">Both parties maintain strict confidentiality of all
+            business data, processes, and technical implementations.</div>
+        </div>
+        <div class="glass" style="padding:20px 24px">
+          <div style="font-size:12px;font-weight:500;color:var(--deep);margin-bottom:8px">Third-party Costs</div>
+          <div style="font-size:12px;color:#5a6880;line-height:1.65">Hosting, database, cloud storage, email, and domain
+            costs are not included. Paid directly or via Zynteq at actuals with full transparency.</div>
+        </div>
+        <div class="glass" style="padding:20px 24px">
+          <div style="font-size:12px;font-weight:500;color:var(--deep);margin-bottom:8px">Post-Launch Support</div>
+          <div style="font-size:12px;color:#5a6880;line-height:1.65">30 days free bug fixes & support after go-live.
+            Monthly retainer available. Additional features → separate estimate before work begins.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ NEXT STEPS ═══════════════════ -->
+    <div class="section page-break">
+      <div class="section-label">09 — Next Steps</div>
+      <h2 class="section-title">Ready to Build</h2>
+
+      <div class="grid-4-steps">
+        <div class="glass" style="padding:18px 20px;text-align:center">
+          <div
+            style="font-family:'Cormorant Garamond',serif;font-size:36px;color:rgba(201,168,76,0.4);line-height:1;margin-bottom:8px">
+            1</div>
+          <div style="font-size:12px;font-weight:500;color:var(--deep);margin-bottom:4px">Sign Off</div>
+          <div style="font-size:11px;color:#9aaa94">Accept this proposal</div>
+        </div>
+        <div class="glass" style="padding:18px 20px;text-align:center">
+          <div
+            style="font-family:'Cormorant Garamond',serif;font-size:36px;color:rgba(201,168,76,0.4);line-height:1;margin-bottom:8px">
+            2</div>
+          <div style="font-size:12px;font-weight:500;color:var(--deep);margin-bottom:4px">Kickoff Call</div>
+          <div style="font-size:11px;color:#9aaa94">Requirements deep-dive</div>
+        </div>
+        <div class="glass" style="padding:18px 20px;text-align:center">
+          <div
+            style="font-family:'Cormorant Garamond',serif;font-size:36px;color:rgba(201,168,76,0.4);line-height:1;margin-bottom:8px">
+            3</div>
+          <div style="font-size:12px;font-weight:500;color:var(--deep);margin-bottom:4px">40% Advance</div>
+          <div style="font-size:11px;color:#9aaa94">Development begins</div>
+        </div>
+        <div class="glass" style="padding:18px 20px;text-align:center">
+          <div
+            style="font-family:'Cormorant Garamond',serif;font-size:36px;color:rgba(201,168,76,0.4);line-height:1;margin-bottom:8px">
+            4</div>
+          <div style="font-size:12px;font-weight:500;color:var(--deep);margin-bottom:4px">Weekly Updates</div>
+          <div style="font-size:11px;color:#9aaa94">Throughout delivery</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ FOOTER ═══════════════════ -->
+    <div class="footer">
+      <div>
+        <div class="footer-brand">Zynteq Technologies</div>
+        <div class="footer-contact">
+          Mohammed Zahid Qureshi<br>
+          zahidqureshi5104@gmail.com<br>
+          +91 97258 60193<br>
+          Vadodara, Gujarat, India
+        </div>
+      </div>
+      <div class="footer-links">
+        <a class="footer-link" href="https://zynteqtechnologies.com/">zynteqtechnologies.com ↗</a>
+        <a class="footer-link" href="http://alshsaze.com">alshsaze.com ↗</a>
+        <div style="margin-top:12px;font-size:11px;color:#9aaa94;text-align:right;line-height:1.8">
+          Contact: alshsaze.com<br>
+          Dubai, UAE · East Africa Hub
+        </div>
+      </div>
+    </div>
+
+    <div class="validity-box">
+      <strong>Proposal Validity:</strong> This proposal is valid for 30 days from the issue date (May 2025). Pricing
+      subject to review after expiry.<br>
+      This is a formal offer from Zynteq Technologies to Alshsaze Trading Co. All third-party service costs are separate
+      and invoiced as incurred.
+    </div>
+
+  </div><!-- /wrap -->
+
+  <script>
+    function exportPDF() {
+      const btn = document.querySelector('.export-btn');
+      btn.textContent = 'Preparing PDF...';
+      btn.style.opacity = '0.7';
+
+      setTimeout(() => {
+        window.print();
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/></svg> Export as PDF';
+        btn.style.opacity = '1';
+      }, 300);
+    }
+
+    // Fade-up on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section, .glass, .milestone, .stage, .feature-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+
+</html>
