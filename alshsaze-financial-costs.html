@@ -8,6 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
+  /* ══════════════════════════════
+     TOKENS
+  ══════════════════════════════ */
   :root {
     --ink: #0d0d0d;
     --paper: #f7f5f0;
@@ -21,13 +24,13 @@
     --amber: #b5832a;
     --amber-bg: rgba(181,131,42,0.10);
     --muted: #6b6457;
-    --tag-bg: rgba(13,13,13,0.06);
   }
 
+  /* ══════════════════════════════
+     RESET & BASE
+  ══════════════════════════════ */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'Inter', sans-serif;
     background: var(--paper);
@@ -37,409 +40,465 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── EXPORT BUTTON ── */
+  /* ══════════════════════════════
+     EXPORT BAR
+  ══════════════════════════════ */
   .export-bar {
     position: sticky; top: 0; z-index: 100;
     background: var(--paper);
     border-bottom: 1px solid var(--rule);
-    padding: 10px 40px;
+    padding: 10px 16px;
     display: flex; justify-content: flex-end; align-items: center;
-    gap: 12px;
   }
   .export-btn {
     font-family: 'Inter', sans-serif;
-    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
     text-transform: uppercase;
     background: var(--ink); color: var(--paper);
-    border: none; padding: 8px 18px; cursor: pointer;
-    transition: opacity 0.2s;
+    border: none; padding: 8px 16px; cursor: pointer;
+    transition: opacity 0.2s; white-space: nowrap;
   }
   .export-btn:hover { opacity: 0.75; }
   @media print { .export-bar { display: none; } }
 
-  /* ── WRAPPER ── */
+  /* ══════════════════════════════
+     PAGE WRAPPER
+  ══════════════════════════════ */
   .page {
     max-width: 860px;
     margin: 0 auto;
-    padding: 60px 40px 100px;
+    padding: 32px 16px 80px;
   }
+  @media (min-width: 480px) { .page { padding: 40px 24px 80px; } }
+  @media (min-width: 768px) { .page { padding: 56px 36px 100px; } }
+  @media (min-width: 1024px) { .page { padding: 64px 40px 100px; } }
 
-  /* ── COVER HEADER ── */
+  /* ══════════════════════════════
+     COVER
+  ══════════════════════════════ */
   .cover {
     border-bottom: 2px solid var(--ink);
-    padding-bottom: 40px;
-    margin-bottom: 56px;
+    padding-bottom: 32px;
+    margin-bottom: 40px;
   }
+  @media (min-width: 768px) { .cover { padding-bottom: 40px; margin-bottom: 56px; } }
+
   .cover-eyebrow {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 0.14em;
+    font-size: 10px; letter-spacing: 0.14em;
     text-transform: uppercase; color: var(--muted);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
   .cover h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 5vw, 44px);
-    font-weight: 400; line-height: 1.15;
-    margin-bottom: 14px;
+    font-size: clamp(24px, 6vw, 44px);
+    font-weight: 400; line-height: 1.2;
+    margin-bottom: 12px;
   }
-  .cover h1 em {
-    font-style: italic; color: var(--accent);
-  }
-  .cover-sub {
-    font-size: 14px; color: var(--muted); max-width: 520px;
-  }
+  .cover h1 em { font-style: italic; color: var(--accent); }
+  .cover-sub { font-size: 13.5px; color: var(--muted); }
   .cover-meta {
-    display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+    margin-top: 24px;
+  }
+  @media (min-width: 480px) {
+    .cover-meta { grid-template-columns: repeat(2, auto); gap: 12px 32px; display: flex; flex-wrap: wrap; }
   }
   .meta-item { display: flex; flex-direction: column; gap: 3px; }
   .meta-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.12em;
+    font-size: 9px; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--muted);
   }
   .meta-value { font-size: 13px; font-weight: 500; }
 
-  /* ── SECTION ── */
-  .section { margin-bottom: 64px; }
+  /* ══════════════════════════════
+     SECTION
+  ══════════════════════════════ */
+  .section { margin-bottom: 48px; }
+  @media (min-width: 768px) { .section { margin-bottom: 64px; } }
+
   .section-header {
-    display: flex; align-items: baseline; gap: 16px;
+    display: flex; align-items: baseline; gap: 12px;
     border-bottom: 1px solid var(--rule-strong);
-    padding-bottom: 12px; margin-bottom: 32px;
+    padding-bottom: 10px; margin-bottom: 24px;
+    flex-wrap: wrap;
   }
   .section-num {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 0.1em;
+    font-size: 10px; letter-spacing: 0.1em;
     text-transform: uppercase; color: var(--accent);
+    white-space: nowrap;
   }
   .section-title {
     font-family: 'Playfair Display', serif;
-    font-size: 22px; font-weight: 600;
+    font-size: clamp(18px, 4vw, 22px); font-weight: 600;
   }
 
-  /* ── CALLOUT ── */
+  /* ══════════════════════════════
+     CALLOUTS
+  ══════════════════════════════ */
   .callout {
     border-left: 3px solid var(--accent);
     background: var(--accent-muted);
-    padding: 16px 20px;
-    margin-bottom: 28px;
+    padding: 14px 16px;
+    margin-bottom: 24px;
     border-radius: 0 4px 4px 0;
   }
   .callout-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--accent);
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
-  .callout p { font-size: 13.5px; color: var(--ink); line-height: 1.6; }
-
-  .callout-tip {
-    border-left-color: var(--green);
-    background: var(--green-bg);
-  }
+  .callout p { font-size: 13px; color: var(--ink); line-height: 1.6; }
+  .callout-tip { border-left-color: var(--green); background: var(--green-bg); }
   .callout-tip .callout-label { color: var(--green); }
 
-  /* ── HYPER-CARE CARD ── */
+  /* ══════════════════════════════
+     HYPER-CARE CARD
+  ══════════════════════════════ */
   .hcare-card {
     border: 1px solid var(--rule-strong);
-    padding: 28px 32px;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
+    padding: 20px;
+    margin-bottom: 16px;
+    position: relative; overflow: hidden;
   }
+  @media (min-width: 480px) { .hcare-card { padding: 24px 28px; } }
+  @media (min-width: 768px) { .hcare-card { padding: 28px 32px; } }
+
   .hcare-card::before {
     content: 'FREE';
-    position: absolute; top: 16px; right: 20px;
+    position: absolute; top: 14px; right: 16px;
     font-family: 'Playfair Display', serif;
-    font-size: 13px; font-style: italic;
-    color: var(--green); letter-spacing: 0.04em;
+    font-size: 12px; font-style: italic;
+    color: var(--green);
     background: var(--green-bg);
-    padding: 4px 12px;
-    border-radius: 2px;
+    padding: 3px 10px; border-radius: 2px;
   }
-  .hcare-title {
-    font-size: 16px; font-weight: 600; margin-bottom: 6px;
-  }
+  .hcare-title { font-size: 15px; font-weight: 600; margin-bottom: 5px; padding-right: 56px; }
   .hcare-tag {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--muted);
-    margin-bottom: 12px;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
   }
-  .hcare-body { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+  .hcare-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
-  /* ── AMC CARD ── */
+  /* ══════════════════════════════
+     AMC CARD
+  ══════════════════════════════ */
   .amc-card {
     border: 1px solid var(--accent-light);
     background: var(--amber-bg);
-    padding: 28px 32px;
-    display: flex; align-items: flex-start; justify-content: space-between;
-    gap: 24px; flex-wrap: wrap;
+    padding: 20px;
+    display: flex; flex-direction: column; gap: 20px;
   }
-  .amc-left { flex: 1 1 300px; }
-  .amc-price {
-    display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0;
+  @media (min-width: 480px) { .amc-card { padding: 24px 28px; } }
+  @media (min-width: 640px) {
+    .amc-card { flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 24px; }
   }
+  @media (min-width: 768px) { .amc-card { padding: 28px 32px; } }
+
+  .amc-left { flex: 1 1 260px; }
+  .amc-price { display: flex; flex-direction: column; }
+  @media (min-width: 640px) { .amc-price { align-items: flex-end; flex-shrink: 0; } }
+
   .price-amount {
     font-family: 'Playfair Display', serif;
-    font-size: 36px; font-weight: 600; color: var(--accent);
-    line-height: 1;
+    font-size: clamp(28px, 6vw, 36px); font-weight: 600; color: var(--accent); line-height: 1;
   }
   .price-currency {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--muted);
-    margin-top: 4px; text-align: right;
+    font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-top: 4px;
   }
-  .amc-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .amc-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-  .amc-body { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+  .amc-title { font-size: 15px; font-weight: 600; margin-bottom: 5px; }
+  .amc-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+  }
+  .amc-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
   .amc-note {
     font-size: 12px; color: var(--muted);
     border-top: 1px solid var(--accent-light);
-    margin-top: 14px; padding-top: 12px;
-    font-style: italic;
+    margin-top: 12px; padding-top: 10px; font-style: italic;
   }
 
-  /* ── INFRA SECTION ── */
+  /* ══════════════════════════════
+     SCENARIO BANNER
+  ══════════════════════════════ */
   .infra-total {
-    display: flex; align-items: center; justify-content: space-between;
     background: var(--ink); color: var(--paper);
-    padding: 20px 28px; margin-bottom: 32px;
-    flex-wrap: wrap; gap: 12px;
+    padding: 20px; margin-bottom: 28px;
+    display: flex; flex-direction: column; gap: 20px;
   }
+  @media (min-width: 480px) { .infra-total { padding: 20px 24px; } }
+  @media (min-width: 640px) {
+    .infra-total { flex-direction: row; align-items: center; justify-content: space-between; gap: 16px; }
+  }
+  @media (min-width: 768px) { .infra-total { padding: 22px 28px; } }
+
   .infra-total-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 0.12em;
+    font-size: 10px; letter-spacing: 0.12em;
     text-transform: uppercase; opacity: 0.7;
   }
-  .infra-total-note { font-size: 13px; opacity: 0.65; margin-top: 2px; }
-  .infra-total-amount {
+  .infra-total-note { font-size: 12px; opacity: 0.6; margin-top: 3px; }
+
+  .infra-total-scenarios {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .scenario { display: flex; flex-direction: column; }
+  .scenario-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    opacity: 0.6; margin-bottom: 2px;
+  }
+  .scenario-amount {
     font-family: 'Playfair Display', serif;
-    font-size: 38px; font-weight: 600;
+    font-size: clamp(22px, 5vw, 30px); font-weight: 600;
     color: var(--accent-light); line-height: 1;
   }
-  .infra-total-usd { font-size: 12px; opacity: 0.6; text-align: right; margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+  .scenario-usd { font-size: 11px; opacity: 0.55; font-family: 'Inter', sans-serif; }
+  .scenario-note { font-size: 10px; opacity: 0.5; margin-top: 2px; }
+  .scenario-divider { font-size: 18px; opacity: 0.35; color: var(--accent-light); }
 
-  .infra-group { margin-bottom: 36px; }
+  /* ══════════════════════════════
+     INFRA GROUPS & ROWS
+  ══════════════════════════════ */
+  .infra-group { margin-bottom: 32px; }
   .infra-group-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px; letter-spacing: 0.14em;
     text-transform: uppercase; color: var(--muted);
     border-bottom: 1px solid var(--rule);
-    padding-bottom: 8px; margin-bottom: 0;
+    padding-bottom: 8px;
     display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 4px;
   }
-  .infra-group-sub {
-    font-size: 11px; color: var(--muted); opacity: 0.7;
-  }
+  .infra-group-sub { font-size: 10px; color: var(--muted); opacity: 0.7; }
 
   .infra-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: start;
-    padding: 18px 0;
+    display: flex; flex-direction: column; gap: 12px;
+    padding: 16px 0;
     border-bottom: 1px solid var(--rule);
-    gap: 20px;
   }
   .infra-row:last-child { border-bottom: none; }
+  @media (min-width: 480px) {
+    .infra-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 16px;
+    }
+  }
+
   .infra-service-name {
-    font-size: 14px; font-weight: 600; margin-bottom: 2px;
-    display: flex; align-items: center; gap: 8px;
+    font-size: 13.5px; font-weight: 600; margin-bottom: 2px;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
   }
   .infra-badge {
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px; letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 2px 7px;
-    border-radius: 2px;
+    text-transform: uppercase; padding: 2px 6px; border-radius: 2px;
+    white-space: nowrap;
   }
   .badge-free { background: var(--green-bg); color: var(--green); }
   .badge-paid { background: var(--amber-bg); color: var(--amber); }
   .infra-service-sub {
-    font-size: 12px; color: var(--muted);
-    font-family: 'JetBrains Mono', monospace;
-    margin-bottom: 6px;
+    font-size: 11px; color: var(--muted);
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 5px;
   }
-  .infra-benefit {
-    font-size: 13px; color: var(--ink); line-height: 1.5;
-  }
+  .infra-benefit { font-size: 12.5px; color: var(--ink); line-height: 1.55; }
+
   .infra-cost {
-    text-align: right; flex-shrink: 0;
-    min-width: 80px;
+    display: flex; flex-direction: row; align-items: baseline; gap: 6px;
+  }
+  @media (min-width: 480px) {
+    .infra-cost { flex-direction: column; align-items: flex-end; gap: 0; min-width: 72px; }
   }
   .infra-cost-amount {
     font-family: 'Playfair Display', serif;
-    font-size: 20px; font-weight: 600;
+    font-size: 18px; font-weight: 600;
   }
-  .infra-cost-amount.free { color: var(--green); font-size: 16px; font-style: italic; }
+  .infra-cost-amount.free { color: var(--green); font-size: 15px; font-style: italic; }
   .infra-cost-period {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; color: var(--muted);
-    letter-spacing: 0.06em;
+    font-size: 10px; color: var(--muted); letter-spacing: 0.06em;
   }
   .infra-cost-detail {
-    font-size: 11px; color: var(--muted); margin-top: 4px;
-    max-width: 120px; text-align: right; line-height: 1.4;
+    font-size: 10px; color: var(--muted); margin-top: 3px; line-height: 1.4;
+    text-align: right;
   }
 
-  /* ── COST SUMMARY TABLE ── */
+  /* ══════════════════════════════
+     SUMMARY TABLE — RESPONSIVE
+     On mobile: stacked cards
+     On tablet+: full table
+  ══════════════════════════════ */
   .summary-table {
-    width: 100%; border-collapse: collapse;
-    margin-top: 28px;
+    width: 100%; border-collapse: collapse; margin-top: 24px;
   }
+
+  /* Hide table on small screens — show cards instead */
+  .summary-table { display: none; }
+  .summary-cards { display: flex; flex-direction: column; gap: 0; margin-top: 24px; }
+
+  @media (min-width: 640px) {
+    .summary-table { display: table; }
+    .summary-cards { display: none; }
+  }
+
+  /* TABLE styles */
   .summary-table th {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.12em;
+    font-size: 9px; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--muted);
-    text-align: left; padding: 8px 12px;
+    text-align: left; padding: 8px 10px;
     border-bottom: 2px solid var(--rule-strong);
   }
   .summary-table th:last-child { text-align: right; }
   .summary-table td {
-    font-size: 13.5px; padding: 11px 12px;
+    font-size: 13px; padding: 10px 10px;
     border-bottom: 1px solid var(--rule);
     vertical-align: top;
   }
-  .summary-table td:last-child { text-align: right; font-weight: 600; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
-  .summary-table .td-name { font-weight: 500; }
-  .summary-table .td-note { font-size: 12px; color: var(--muted); }
-  .summary-table .td-plan {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--ink);
+  .summary-table td:last-child {
+    text-align: right; font-weight: 600;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
     white-space: nowrap;
   }
-  .summary-table .td-features { font-size: 13px; color: var(--ink); line-height: 1.5; }
-  .summary-table .td-green { color: var(--green); }
-
-  /* scenario banner */
-  .infra-total-scenarios {
-    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-  }
-  .scenario { display: flex; flex-direction: column; }
-  .scenario-label {
+  .summary-table .td-name { font-weight: 500; font-size: 13px; }
+  .summary-table .td-note { font-size: 11px; color: var(--muted); }
+  .summary-table .td-plan {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-    opacity: 0.6; margin-bottom: 3px;
+    font-size: 10.5px; color: var(--ink); white-space: nowrap;
   }
-  .scenario-amount {
-    font-family: 'Playfair Display', serif;
-    font-size: 30px; font-weight: 600; color: var(--accent-light); line-height: 1;
-  }
-  .scenario-usd { font-size: 12px; opacity: 0.6; font-family: 'Inter', sans-serif; }
-  .scenario-note { font-size: 11px; opacity: 0.55; margin-top: 3px; }
-  .scenario-divider { font-size: 20px; opacity: 0.4; padding: 0 4px; color: var(--accent-light); }
+  .summary-table .td-features { font-size: 12px; color: var(--ink); line-height: 1.5; }
+  .summary-table .td-green { color: var(--green); }
+  .td-plan-split em { font-style: normal; opacity: 0.5; font-size: 10px; }
 
-  /* tier tags inside table */
+  .td-dual-cost {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 1px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+  }
+  .td-cost-divider { font-size: 9px; opacity: 0.4; font-weight: 400; }
+
   .tier-tag {
     display: inline-block;
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 2px 6px; border-radius: 2px; margin-right: 6px;
+    padding: 2px 5px; border-radius: 2px; margin-right: 5px;
     vertical-align: middle;
   }
   .tier-free { background: var(--green-bg); color: var(--green); }
   .tier-paid { background: var(--amber-bg); color: var(--amber); }
-  .td-plan-split em { font-style: normal; opacity: 0.5; font-size: 10px; }
 
-  /* dual cost cell */
-  .td-dual-cost {
-    display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
-    font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600;
-  }
-  .td-cost-divider { font-size: 9px; opacity: 0.4; font-weight: 400; letter-spacing: 0.08em; }
-
-  /* two total rows */
   .total-row-free td {
     border-top: 2px solid var(--green) !important;
     border-bottom: none !important;
     background: var(--green-bg);
-    font-size: 13.5px !important;
-    padding-top: 12px !important;
-    font-weight: 600;
+    font-size: 13px !important; padding-top: 12px !important; font-weight: 600;
   }
   .total-row-free td:last-child {
     color: var(--green) !important;
-    font-family: 'Playfair Display', serif !important;
-    font-size: 17px !important;
+    font-family: 'Playfair Display', serif !important; font-size: 16px !important;
   }
   .total-row-paid td {
     border-top: 1px solid var(--accent-light) !important;
     border-bottom: none !important;
     background: var(--amber-bg);
-    font-size: 13.5px !important;
-    padding-top: 12px !important;
-    font-weight: 600;
+    font-size: 13px !important; padding-top: 12px !important; font-weight: 600;
   }
   .total-row-paid td:last-child {
     color: var(--accent) !important;
-    font-family: 'Playfair Display', serif !important;
-    font-size: 17px !important;
+    font-family: 'Playfair Display', serif !important; font-size: 16px !important;
   }
 
-  @media (max-width: 600px) {
-    .infra-total { flex-direction: column; gap: 16px; }
-    .infra-total-scenarios { gap: 10px; }
-    .scenario-amount { font-size: 24px; }
+  /* MOBILE CARDS (< 640px) */
+  .scard {
+    border: 1px solid var(--rule);
+    border-top: none; padding: 14px 16px;
   }
-  .summary-table tr.total-row td {
-    border-top: 2px solid var(--ink);
-    border-bottom: none;
-    font-weight: 600;
-    font-size: 14px;
-    padding-top: 14px;
+  .scard:first-child { border-top: 2px solid var(--rule-strong); }
+  .scard-header {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;
+    margin-bottom: 6px;
   }
-  .summary-table tr.total-row td:last-child {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    color: var(--accent);
+  .scard-name { font-size: 14px; font-weight: 600; }
+  .scard-sub { font-size: 11px; color: var(--muted); }
+  .scard-plan {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--ink); white-space: nowrap; padding-top: 3px;
+  }
+  .scard-features { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin-bottom: 8px; }
+  .scard-cost {
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .scard-cost .td-green { color: var(--green); }
+  .scard.total-card-free {
+    background: var(--green-bg); border: 2px solid var(--green);
+    margin-top: 8px;
+  }
+  .scard.total-card-paid {
+    background: var(--amber-bg); border: 1px solid var(--accent-light);
+    border-top: none;
+  }
+  .scard-total-label { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+  .scard-total-sub { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+  .scard-total-amount {
+    font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600;
+  }
+  .scard-total-amount.green { color: var(--green); }
+  .scard-total-amount.amber { color: var(--accent); }
+
+  /* ══════════════════════════════
+     ORNAMENT
+  ══════════════════════════════ */
+  .ornament {
+    text-align: center; color: var(--accent);
+    font-size: 14px; letter-spacing: 0.4em;
+    margin: 32px 0; opacity: 0.5;
   }
 
-  /* ── FOOTER ── */
+  /* ══════════════════════════════
+     FOOTER
+  ══════════════════════════════ */
   .footer {
     border-top: 2px solid var(--ink);
-    padding-top: 32px;
-    margin-top: 64px;
-    display: flex; justify-content: space-between; flex-wrap: wrap;
-    gap: 20px;
+    padding-top: 28px; margin-top: 56px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  @media (min-width: 640px) {
+    .footer {
+      flex-direction: row; justify-content: space-between; align-items: flex-start;
+    }
+    .footer-legal { text-align: right; max-width: 320px; }
   }
   .footer-brand {
     font-family: 'Playfair Display', serif;
-    font-size: 16px; font-weight: 600;
-    margin-bottom: 4px;
+    font-size: 15px; font-weight: 600; margin-bottom: 4px;
   }
-  .footer-sub { font-size: 12px; color: var(--muted); }
-  .footer-legal {
-    font-size: 11px; color: var(--muted); max-width: 340px;
-    text-align: right; line-height: 1.6;
-  }
+  .footer-sub { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .footer-legal { font-size: 11px; color: var(--muted); line-height: 1.6; }
 
-  /* ── DIVIDER ── */
-  .ornament {
-    text-align: center; color: var(--accent);
-    font-size: 16px; letter-spacing: 0.4em;
-    margin: 40px 0;
-    opacity: 0.5;
-  }
-
-  @media (max-width: 600px) {
-    .page { padding: 40px 20px 80px; }
-    .export-bar { padding: 10px 20px; }
-    .amc-card { flex-direction: column; }
-    .amc-price { align-items: flex-start; }
-    .infra-total { flex-direction: column; }
-    .infra-total-amount { font-size: 30px; }
-    .infra-row { grid-template-columns: 1fr; }
-    .infra-cost { text-align: left; }
-    .infra-cost-detail { text-align: left; max-width: 100%; }
-    .footer { flex-direction: column; }
-    .footer-legal { text-align: left; max-width: 100%; }
-  }
-
+  /* ══════════════════════════════
+     PRINT
+  ══════════════════════════════ */
   @media print {
     body { background: white; }
-    .page { padding: 40px; }
-    .infra-total { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .hcare-card, .amc-card, .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { padding: 32px; }
+    .summary-cards { display: none !important; }
+    .summary-table { display: table !important; }
+    .infra-total, .hcare-card, .amc-card, .callout,
+    .total-row-free td, .total-row-paid td {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
   }
 </style>
 </head>
@@ -657,7 +716,72 @@
       </div>
     </div>
 
-    <!-- Summary Table -->
+    <!-- Mobile summary cards (hidden on tablet+) -->
+    <div class="summary-cards">
+      <div class="scard">
+        <div class="scard-header">
+          <div><div class="scard-name">Railway</div><div class="scard-sub">App Server + Frontend Hosting</div></div>
+          <div class="scard-plan">Starter</div>
+        </div>
+        <div class="scard-features">Hosts both backend API and frontend. High RAM/CPU, auto-deploy from Git, no cold starts.</div>
+        <div class="scard-cost">$5 <span style="font-size:10px;color:var(--muted);font-weight:400;">/ mo</span></div>
+      </div>
+      <div class="scard">
+        <div class="scard-header">
+          <div><div class="scard-name">Cloudflare</div><div class="scard-sub">CDN, DDoS &amp; Security</div></div>
+          <div class="scard-plan">Free ✅</div>
+        </div>
+        <div class="scard-features">DDoS protection, global caching, SSL — loads instantly across East Africa and Dubai.</div>
+        <div class="scard-cost td-green">$0</div>
+      </div>
+      <div class="scard">
+        <div class="scard-header">
+          <div><div class="scard-name">Supabase</div><div class="scard-sub">Database + Auth + Real-time</div></div>
+          <div class="scard-plan">Pro ✅</div>
+        </div>
+        <div class="scard-features">8 GB DB, daily backups, 100k MAUs, real-time, no pausing.</div>
+        <div class="scard-cost">$25 <span style="font-size:10px;color:var(--muted);font-weight:400;">/ mo</span></div>
+      </div>
+      <div class="scard">
+        <div class="scard-header">
+          <div><div class="scard-name">ImageKit</div><div class="scard-sub">Document &amp; PDF Storage</div></div>
+          <div class="scard-plan">Lite</div>
+        </div>
+        <div class="scard-features">10 GB storage, 40 GB bandwidth, auto-folder creation per deal. Pay-as-you-go overage: $0.10/GB storage &amp; $0.50/GB bandwidth.</div>
+        <div class="scard-cost">$9 <span style="font-size:10px;color:var(--muted);font-weight:400;">/ mo</span></div>
+      </div>
+      <div class="scard">
+        <div class="scard-header">
+          <div><div class="scard-name">Resend</div><div class="scard-sub">Transactional Emails</div></div>
+          <div class="scard-plan">Free or Pro</div>
+        </div>
+        <div class="scard-features">
+          <span><span class="tier-tag tier-free">Free</span>Up to 100 emails/day — $0/month at low volume.</span><br style="margin:4px 0;">
+          <span><span class="tier-tag tier-paid">Pro</span>50,000/month, no daily limit — upgrade when needed.</span>
+        </div>
+        <div class="scard-cost"><span class="td-green">$0</span>&nbsp;<span style="font-size:10px;color:var(--muted);font-weight:400;">or</span>&nbsp;$20</div>
+      </div>
+      <div class="scard">
+        <div class="scard-header">
+          <div><div class="scard-name">ShipsGo API</div><div class="scard-sub">Live Container Tracking</div></div>
+          <div class="scard-plan">Bulk Credits</div>
+        </div>
+        <div class="scard-features">~$2 per container, consumed once per voyage. 250 credits / $500 (1 year) → ~$20/month at 10 containers/month.</div>
+        <div class="scard-cost">~$20 <span style="font-size:10px;color:var(--muted);font-weight:400;">/ mo</span></div>
+      </div>
+      <div class="scard total-card-free">
+        <div class="scard-total-label">Total — Free Tier</div>
+        <div class="scard-total-sub">Railway + Supabase + ImageKit + Resend Free + ShipsGo</div>
+        <div class="scard-total-amount green">$59 <span style="font-size:13px;font-family:'Inter',sans-serif;font-weight:400;opacity:0.7;">/ mo</span></div>
+      </div>
+      <div class="scard total-card-paid">
+        <div class="scard-total-label">Total — Paid Tier</div>
+        <div class="scard-total-sub">Same as above + Resend Pro when daily emails exceed 100</div>
+        <div class="scard-total-amount amber">$79 <span style="font-size:13px;font-family:'Inter',sans-serif;font-weight:400;opacity:0.7;">/ mo</span></div>
+      </div>
+    </div>
+
+    <!-- Summary Table (hidden on mobile, shown tablet+) -->
     <table class="summary-table">
       <thead>
         <tr>
