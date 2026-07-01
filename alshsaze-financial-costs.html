@@ -579,25 +579,25 @@
     </div>
 
     <div class="callout callout-tip">
-      <div class="callout-label">💡 Tip</div>
-      <p>Because we are building a custom, highly-optimised platform rather than forcing you into bloated enterprise software, your monthly running costs are exceptionally low. You only pay for the exact server power and tracking volume you use.</p>
+      <div class="callout-label">💡 Tip: Guaranteed "No Surprises" Billing</div>
+      <p>Because we are building a custom, highly-optimised platform rather than forcing you into bloated enterprise software, your monthly running costs are exceptionally low. We have engineered this infrastructure with hard spend limits and automated spend caps, guaranteeing your monthly bill will never randomly spike out of control.</p>
     </div>
 
     <div class="infra-total">
       <div>
         <div class="infra-total-label">Monthly Running Cost — Two Scenarios</div>
-        <div class="infra-total-note">Costs scale with your email &amp; tracking volume</div>
+        <div class="infra-total-note">Costs scale strictly with your email &amp; tracking volume</div>
       </div>
       <div class="infra-total-scenarios">
         <div class="scenario">
-          <div class="scenario-label">Free Tier (low volume)</div>
-          <div class="scenario-amount">$59 <span class="scenario-usd">USD/mo</span></div>
-          <div class="scenario-note">Resend free · ShipsGo ~$20</div>
+          <div class="scenario-label">Low Volume Tier</div>
+          <div class="scenario-amount">$50 <span class="scenario-usd">USD/mo</span></div>
+          <div class="scenario-note">Resend Free · ShipsGo ~$20</div>
         </div>
         <div class="scenario-divider">→</div>
         <div class="scenario">
-          <div class="scenario-label">Paid Tier (high volume)</div>
-          <div class="scenario-amount">$79 <span class="scenario-usd">USD/mo</span></div>
+          <div class="scenario-label">High Volume Tier</div>
+          <div class="scenario-amount">$70 <span class="scenario-usd">USD/mo</span></div>
           <div class="scenario-note">Resend Pro $20 · ShipsGo ~$20</div>
         </div>
       </div>
@@ -607,21 +607,24 @@
     <div class="infra-group">
       <div class="infra-group-label">
         <span>Software Servers &amp; Storage</span>
-        <span class="infra-group-sub">~$30 / month</span>
+        <span class="infra-group-sub">~$31.50 / month</span>
       </div>
 
       <div class="infra-row">
         <div>
           <div class="infra-service-name">
-            App Server · Railway
-            <span class="infra-badge badge-paid">Paid</span>
+            App Server &amp; Frontend · Railway
+            <span class="infra-badge badge-paid">Hobby Tier</span>
           </div>
           <div class="infra-service-sub">railway.app</div>
-          <p class="infra-benefit">Extremely fast server performance handling massive amounts of RAM and CPU — ensures the CRM never crashes under heavy load.</p>
+          <p class="infra-benefit" style="margin-bottom: 8px;">Extremely fast Docker container server handling your Next.js backend and frontend with zero cold starts.</p>
+          <p class="infra-benefit" style="margin-bottom: 8px;"><strong style="color:var(--ink); font-weight:600;">Real-World Usage Example:</strong> If your business processes a heavy load of <strong>1,000 logistics deals per month</strong>, that generates roughly <strong>80,000 server requests</strong> (from drivers sending GPS locations, staff loading tables, and API pings). Because modern cloud computing is so fast, processing 80,000 requests consumes only <strong>~$6.50/month</strong> in CPU, RAM, and bandwidth.</p>
+          <p class="infra-benefit"><strong style="color:var(--green); font-weight:600;">No Surprises Guarantee:</strong> We will configure a <strong>$10.00 Hard Spend Limit</strong> in the dashboard so your server bill never exceeds your budget.</p>
         </div>
         <div class="infra-cost">
-          <div class="infra-cost-amount">$5</div>
+          <div class="infra-cost-amount">~$6.50</div>
           <div class="infra-cost-period">/ month</div>
+          <div class="infra-cost-detail">Hobby usage-based</div>
         </div>
       </div>
 
@@ -629,10 +632,10 @@
         <div>
           <div class="infra-service-name">
             Domain Security &amp; Speed · Cloudflare
-            <span class="infra-badge badge-free">Free</span>
+            <span class="infra-badge badge-free">Free Tier</span>
           </div>
           <div class="infra-service-sub">cloudflare.com</div>
-          <p class="infra-benefit">Invisible security shield providing DDoS protection and global caching so the app loads instantly across East Africa and Dubai.</p>
+          <p class="infra-benefit">Invisible security shield providing automated DDoS protection, SSL certificates, and global edge caching so the app loads instantly across East Africa and Dubai.</p>
         </div>
         <div class="infra-cost">
           <div class="infra-cost-amount free">Free</div>
@@ -643,11 +646,13 @@
       <div class="infra-row">
         <div>
           <div class="infra-service-name">
-            Database · Supabase Pro
-            <span class="infra-badge badge-paid">Paid</span>
+            Database &amp; Document Storage · Supabase Pro
+            <span class="infra-badge badge-paid">Pro Plan</span>
           </div>
           <div class="infra-service-sub">supabase.com · Pro Plan</div>
-          <p class="infra-benefit">Enterprise-grade database with automated daily backups so your business data is never lost. Includes 8 GB storage and 100k monthly active users.</p>
+          <p class="infra-benefit" style="margin-bottom: 8px;">Enterprise PostgreSQL database with automated daily backups so your shipping data is never lost. Includes <strong style="color:var(--ink); font-weight:600;">8 GB of Dedicated Database Storage</strong> for text records (enough for ~8 million logistics records) and 100,000 monthly active users.</p>
+          <p class="infra-benefit" style="margin-bottom: 8px;"><strong style="color:var(--ink); font-weight:600;">100 GB Included File Storage:</strong> Unlike traditional setups that require paying for third-party file storage, Supabase Pro automatically includes <strong>100 GB of secure storage and 250 GB of viewing bandwidth</strong> for all your SADs, RCNs, Bills of Lading, and driver Proof of Delivery photos at zero extra cost.</p>
+          <p class="infra-benefit"><strong style="color:var(--green); font-weight:600;">No Surprises Guarantee:</strong> We enable the built-in <strong>Spend Cap</strong>, ensuring your database bill is strictly locked at $25.00.</p>
         </div>
         <div class="infra-cost">
           <div class="infra-cost-amount">$25</div>
@@ -658,31 +663,16 @@
       <div class="infra-row">
         <div>
           <div class="infra-service-name">
-            Document Storage · ImageKit
-            <span class="infra-badge badge-paid">Lite Plan</span>
-          </div>
-          <div class="infra-service-sub">imagekit.io · Lite</div>
-          <p class="infra-benefit">10 GB storage, 40 GB bandwidth per month, auto-folder creation per deal for RCNs and SADs. Pay-as-you-go overage: $0.10/GB storage &amp; $0.50/GB bandwidth — no hard stops.</p>
-        </div>
-        <div class="infra-cost">
-          <div class="infra-cost-amount">$9</div>
-          <div class="infra-cost-period">/ month</div>
-        </div>
-      </div>
-
-      <div class="infra-row">
-        <div>
-          <div class="infra-service-name">
             Email Automation · Resend
-            <span class="infra-badge badge-paid">Pro Plan</span>
+            <span class="infra-badge badge-paid">Free or Pro Plan</span>
           </div>
           <div class="infra-service-sub">resend.com · Pro</div>
-          <p class="infra-benefit">50,000 emails/month, no daily sending limit, up to 10 domains. Handles all payment reminders, RCN upload alerts, POD notifications, and overdue warnings at scale.</p>
-          <p class="infra-benefit" style="margin-top:6px; font-size:12px; color:var(--muted);">Free Tier alternative: covers up to 100 emails/day (3,000/month) for $0/month — sufficient for early-stage usage.</p>
+          <p class="infra-benefit">Handles all automated payment reminders, RCN upload alerts, POD notifications, and overdue warnings at scale.</p>
+          <p class="infra-benefit" style="margin-top:6px; font-size:12px; color:var(--muted);"><strong>Free Tier:</strong> Covers up to 100 emails/day (3,000 emails/month) — completely sufficient for standard daily operations.<br><strong>Pro Plan ($20/mo):</strong> 50,000 emails/month from up to 10 custom domains with zero daily sending limits.</p>
         </div>
         <div class="infra-cost">
-          <div class="infra-cost-amount">$20</div>
-          <div class="infra-cost-period">/ month</div>
+          <div class="infra-cost-amount">$0</div>
+          <div class="infra-cost-period">or $20 / mo</div>
           <div class="infra-cost-detail">$0 on free tier at low volume</div>
         </div>
       </div>
@@ -700,12 +690,12 @@
         <div>
           <div class="infra-service-name">
             Container Tracking · ShipsGo API
-            <span class="infra-badge badge-paid">Usage-Based</span>
+            <span class="infra-badge badge-paid">Usage-Based Bulk Credits</span>
           </div>
           <div class="infra-service-sub">shipsgo.com · Bulk Credit Pack</div>
-          <p class="infra-benefit">Live container tracking for MSC, Maersk, CMA CGM, and all major carriers — directly inside the CRM, pre-loaded with Bill of Lading. Credits are consumed only once per container for its entire voyage.</p>
+          <p class="infra-benefit">Live container tracking for MSC, Maersk, CMA CGM, and all major carriers — integrated directly inside your CRM, pre-loaded with Bills of Lading. Credits are consumed only once per container for its entire ocean voyage.</p>
           <p class="infra-benefit" style="margin-top:8px; font-size:12px; color:var(--muted);">
-            Pricing: ~$2 per container tracked. Purchase a bulk pack (e.g., 250 credits for $500, valid 1 year). At 10 containers/month, your amortised cost is only $20/month.
+            Pricing: ~$2 per container tracked. Purchase an annual bulk credit pack (e.g., 250 credits for $500, valid for 1 year). At an average of 10 tracked containers/month, your amortised cost is only $20/month.
           </p>
         </div>
         <div class="infra-cost">
@@ -720,11 +710,11 @@
     <div class="summary-cards">
       <div class="scard">
         <div class="scard-header">
-          <div><div class="scard-name">Railway</div><div class="scard-sub">App Server + Frontend Hosting</div></div>
-          <div class="scard-plan">Starter</div>
+          <div><div class="scard-name">Railway</div><div class="scard-sub">App Server &amp; Frontend Hosting</div></div>
+          <div class="scard-plan">Hobby Tier</div>
         </div>
-        <div class="scard-features">Hosts both backend API and frontend. High RAM/CPU, auto-deploy from Git, no cold starts.</div>
-        <div class="scard-cost">$5 <span style="font-size:10px;color:var(--muted);font-weight:400;">/ mo</span></div>
+        <div class="scard-features">Hosts Next.js backend &amp; frontend. <strong>Example:</strong> 1,000 deals/mo (~80,000 requests) costs ~$6.50. Capped at $10 for zero surprises.</div>
+        <div class="scard-cost">~$6.50 <span style="font-size:10px;color:var(--muted);font-weight:400;">/ mo</span></div>
       </div>
       <div class="scard">
         <div class="scard-header">
@@ -736,19 +726,11 @@
       </div>
       <div class="scard">
         <div class="scard-header">
-          <div><div class="scard-name">Supabase</div><div class="scard-sub">Database + Auth + Real-time</div></div>
+          <div><div class="scard-name">Supabase</div><div class="scard-sub">Database + Auth + Document Storage</div></div>
           <div class="scard-plan">Pro ✅</div>
         </div>
-        <div class="scard-features">8 GB DB, daily backups, 100k MAUs, real-time, no pausing.</div>
+        <div class="scard-features"><strong>8 GB text DB</strong> (~8M records), daily backups, 100k users, plus <strong>100 GB file storage</strong> for all SADs, RCNs, and PDFs.</div>
         <div class="scard-cost">$25 <span style="font-size:10px;color:var(--muted);font-weight:400;">/ mo</span></div>
-      </div>
-      <div class="scard">
-        <div class="scard-header">
-          <div><div class="scard-name">ImageKit</div><div class="scard-sub">Document &amp; PDF Storage</div></div>
-          <div class="scard-plan">Lite</div>
-        </div>
-        <div class="scard-features">10 GB storage, 40 GB bandwidth, auto-folder creation per deal. Pay-as-you-go overage: $0.10/GB storage &amp; $0.50/GB bandwidth.</div>
-        <div class="scard-cost">$9 <span style="font-size:10px;color:var(--muted);font-weight:400;">/ mo</span></div>
       </div>
       <div class="scard">
         <div class="scard-header">
@@ -756,7 +738,7 @@
           <div class="scard-plan">Free or Pro</div>
         </div>
         <div class="scard-features">
-          <span><span class="tier-tag tier-free">Free</span>Up to 100 emails/day — $0/month at low volume.</span><br style="margin:4px 0;">
+          <span><span class="tier-tag tier-free">Free</span>Up to 100 emails/day — $0/month at standard volume.</span><br style="margin:4px 0;">
           <span><span class="tier-tag tier-paid">Pro</span>50,000/month, no daily limit — upgrade when needed.</span>
         </div>
         <div class="scard-cost"><span class="td-green">$0</span>&nbsp;<span style="font-size:10px;color:var(--muted);font-weight:400;">or</span>&nbsp;$20</div>
@@ -770,14 +752,14 @@
         <div class="scard-cost">~$20 <span style="font-size:10px;color:var(--muted);font-weight:400;">/ mo</span></div>
       </div>
       <div class="scard total-card-free">
-        <div class="scard-total-label">Total — Free Tier</div>
-        <div class="scard-total-sub">Railway + Supabase + ImageKit + Resend Free + ShipsGo</div>
-        <div class="scard-total-amount green">$59 <span style="font-size:13px;font-family:'Inter',sans-serif;font-weight:400;opacity:0.7;">/ mo</span></div>
+        <div class="scard-total-label">Total — Standard Volume Tier</div>
+        <div class="scard-total-sub">Railway + Cloudflare + Supabase Pro + Resend Free + ShipsGo</div>
+        <div class="scard-total-amount green">$50 <span style="font-size:13px;font-family:'Inter',sans-serif;font-weight:400;opacity:0.7;">/ mo</span></div>
       </div>
       <div class="scard total-card-paid">
-        <div class="scard-total-label">Total — Paid Tier</div>
+        <div class="scard-total-label">Total — High Volume Tier</div>
         <div class="scard-total-sub">Same as above + Resend Pro when daily emails exceed 100</div>
-        <div class="scard-total-amount amber">$79 <span style="font-size:13px;font-family:'Inter',sans-serif;font-weight:400;opacity:0.7;">/ mo</span></div>
+        <div class="scard-total-amount amber">$70 <span style="font-size:13px;font-family:'Inter',sans-serif;font-weight:400;opacity:0.7;">/ mo</span></div>
       </div>
     </div>
 
@@ -793,10 +775,10 @@
       </thead>
       <tbody>
         <tr>
-          <td><span class="td-name">Railway</span><br><span class="td-note">App Server + Frontend Hosting</span></td>
-          <td><span class="td-plan">Starter</span></td>
-          <td class="td-features">Hosts both backend API and frontend. High RAM/CPU, auto-deploy from Git, no cold starts.</td>
-          <td>$5</td>
+          <td><span class="td-name">Railway</span><br><span class="td-note">App Server &amp; Frontend Hosting</span></td>
+          <td><span class="td-plan">Hobby Tier</span></td>
+          <td class="td-features">Hosts Next.js backend &amp; frontend. <strong>Example:</strong> 1,000 deals/mo (~80,000 server requests) costs only ~$6.50. Capped at $10 for zero surprises.</td>
+          <td>~$6.50</td>
         </tr>
         <tr>
           <td><span class="td-name">Cloudflare</span><br><span class="td-note">CDN, DDoS &amp; Security</span></td>
@@ -805,16 +787,10 @@
           <td class="td-green">$0</td>
         </tr>
         <tr>
-          <td><span class="td-name">Supabase</span><br><span class="td-note">Database + Auth + Real-time</span></td>
+          <td><span class="td-name">Supabase</span><br><span class="td-note">Database + Auth + Document Storage</span></td>
           <td><span class="td-plan">Pro ✅</span></td>
-          <td class="td-features">8 GB DB, daily backups, 100k MAUs, real-time, no pausing</td>
+          <td class="td-features"><strong>8 GB text DB</strong> (~8 million records), daily backups, 100k users, plus <strong>100 GB file storage</strong> for all SADs, RCNs, and PDFs.</td>
           <td>$25</td>
-        </tr>
-        <tr>
-          <td><span class="td-name">ImageKit</span><br><span class="td-note">Document &amp; PDF Storage</span></td>
-          <td><span class="td-plan">Lite</span></td>
-          <td class="td-features">10 GB storage, 40 GB bandwidth, auto-folder creation.<br><span class="td-note">Pay-as-you-go overage: $0.10/GB storage &amp; $0.50/GB bandwidth (no hard stops).</span></td>
-          <td>$9</td>
         </tr>
         <tr>
           <td><span class="td-name">Resend</span><br><span class="td-note">Transactional Emails</span></td>
@@ -839,17 +815,17 @@
         </tr>
         <tr class="total-row total-row-free">
           <td colspan="3">
-            <strong>Total — Free Tier</strong>
-            <span class="td-note" style="font-weight:400; margin-left:8px;">Railway + Supabase + ImageKit + Resend Free + ShipsGo</span>
+            <strong>Total — Standard Volume Tier</strong>
+            <span class="td-note" style="font-weight:400; margin-left:8px;">Railway + Cloudflare + Supabase Pro + Resend Free + ShipsGo</span>
           </td>
-          <td>$59 <span style="font-size:10px; opacity:0.6;">/ mo</span></td>
+          <td>$50 <span style="font-size:10px; opacity:0.6;">/ mo</span></td>
         </tr>
         <tr class="total-row total-row-paid">
           <td colspan="3">
-            <strong>Total — Paid Tier</strong>
+            <strong>Total — High Volume Tier</strong>
             <span class="td-note" style="font-weight:400; margin-left:8px;">Same as above + Resend Pro (when daily emails exceed 100)</span>
           </td>
-          <td>$79 <span style="font-size:10px; opacity:0.6;">/ mo</span></td>
+          <td>$70 <span style="font-size:10px; opacity:0.6;">/ mo</span></td>
         </tr>
       </tbody>
     </table>
